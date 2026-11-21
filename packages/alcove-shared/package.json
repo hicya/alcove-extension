@@ -1,0 +1,14 @@
+{
+  "name": "@hicya/alcove-shared",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./analytics": "./src/analytics/index.ts",
+    "./lib": "./src/lib/index.ts"
+  },
+  "dependencies": {
+    "@hicya/analytics": "workspace:*",
+    "@hicya/sync": "workspace:*"
+  }
+}

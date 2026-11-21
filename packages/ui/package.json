@@ -1,0 +1,14 @@
+{
+  "name": "@hicya/ui",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./splotch-text": "./src/splotch/splotch-text.tsx"
+  },
+  "dependencies": {
+    "@hicya/splotch": "workspace:*",
+    "classnames": "^2.5.1",
+    "react": "^19.0.0",
+    "@types/react": "^19.0.0"
+  }
+}

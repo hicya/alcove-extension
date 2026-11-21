@@ -1,0 +1,15 @@
+Copyright (c) 2026 hicya. All rights reserved.
+
+This repository is published so that anyone can read the source code of the Alcove browser
+extension and check what it does.
+
+You may read this code, and build it on your own computer to compare the result with the
+extension published in the Chrome Web Store, Microsoft Edge Add-ons or Firefox Add-ons.
+
+No other rights are granted. You may not copy, modify, publish, distribute, sublicense or sell
+this code or anything built from it, in whole or in part, without written permission from hicya.
+
+The names "Alcove" and "hicya", their logos and the extension's icons are not covered by any
+permission in this file.
+
+THE CODE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.

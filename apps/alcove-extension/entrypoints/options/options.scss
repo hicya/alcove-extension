@@ -1,0 +1,367 @@
+// Alcove extension options page. Tokens follow DESIGN.md (cream/ink, Alcove teal,
+// Fraunces display, Instrument Sans body). Fonts ship inside the extension (OFL, see /fonts).
+
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/fraunces-latin-wght-normal.woff2") format("woff2");
+}
+
+@each $weight in 400, 500, 600 {
+  @font-face {
+    font-family: "Instrument Sans";
+    font-style: normal;
+    font-weight: $weight;
+    font-display: swap;
+    src: url("/fonts/instrument-sans-latin-#{$weight}-normal.woff2") format("woff2");
+  }
+}
+
+:root {
+  color-scheme: light dark;
+  --bg-primary: #f4efe7;
+  --bg-surface: #fbf7f1;
+  --bg-surface-strong: #efe7dc;
+  --text-primary: #241e1a;
+  --text-secondary: #6b6058;
+  --border: #d8cbbe;
+  --shadow: rgba(36, 30, 26, 0.08);
+  --accent: #2d6e73;
+  --accent-text: #f4efe7;
+  --error: #b84a4a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #171311;
+    --bg-surface: #211c19;
+    --bg-surface-strong: #2a2420;
+    --text-primary: #f3ede4;
+    --text-secondary: #b7aaa0;
+    --border: #3a322d;
+    --shadow: rgba(0, 0, 0, 0.28);
+    --accent: #4a9aa0;
+    --accent-text: #171311;
+    --error: #d46b6b;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.options-page {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 48px 16px 64px;
+}
+
+.options-header {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 32px;
+
+  .mark {
+    flex: none;
+    border-radius: 12px;
+  }
+
+  h1 {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 2.75rem;
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+
+  .subtitle {
+    margin-top: 4px;
+    color: var(--text-secondary);
+  }
+}
+
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 1px 2px var(--shadow);
+  padding: 24px;
+  margin-bottom: 16px;
+
+  h2 {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  p {
+    color: var(--text-secondary);
+  }
+}
+
+.account {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  min-height: 96px;
+}
+
+.status strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.error {
+  margin-top: 12px;
+  color: var(--error) !important;
+  font-size: 0.875rem;
+}
+
+.ways {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  li {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+}
+
+.way-title {
+  font-weight: 600;
+}
+
+.way-detail {
+  color: var(--text-secondary);
+}
+
+kbd {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.8125rem;
+  padding: 2px 6px;
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  background: var(--bg-surface-strong);
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin-top: 16px;
+
+  a {
+    color: var(--accent);
+    font-weight: 500;
+    text-decoration: none;
+
+    &:hover,
+    &:focus-visible {
+      text-decoration: underline;
+    }
+  }
+}
+
+.signature {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.wordmark {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  // Room for the descender of the "y", which the splotch field fills too.
+  line-height: 1.3;
+  // The solid fallback ink where the splotch field can't be clipped to the text.
+  color: var(--text-primary);
+}
+
+.signature-line {
+  margin-top: 4px;
+  color: var(--text-secondary);
+}
+
+.signature-rows {
+  list-style: none;
+  margin-top: 16px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+
+  li + li {
+    border-top: 1px solid var(--border);
+  }
+
+  a {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 14px 20px;
+    color: var(--accent);
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 150ms ease-out;
+
+    &::after {
+      content: "\2197";
+      position: absolute;
+      right: 20px;
+      color: var(--text-secondary);
+    }
+
+    &:hover,
+    &:focus-visible {
+      background: var(--bg-surface-strong);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: -2px;
+    }
+  }
+
+  li {
+    position: relative;
+  }
+
+  li a::after {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.row-hint {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+.btn {
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 150ms ease-out;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: var(--border);
+
+  &:hover:not(:disabled) {
+    background: var(--bg-surface-strong);
+  }
+}
+
+.skeleton {
+  display: block;
+  border-radius: 4px;
+  background: var(--bg-surface-strong);
+}
+
+.skeleton-text {
+  width: 70%;
+  height: 24px;
+}
+
+.skeleton-button {
+  width: 96px;
+  height: 44px;
+  border-radius: 8px;
+}
+
+.skeleton-inline {
+  display: inline-block;
+  width: 160px;
+  height: 1em;
+  vertical-align: middle;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .signature-rows a {
+    transition: none;
+  }
+}
+
+.delete-account {
+  flex-basis: 100%;
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+
+  a {
+    color: var(--error);
+    font-weight: 600;
+  }
+}
+
+.sign-in-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.btn-apple {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #000;
+  color: #fff;
+  border-color: #000;
+
+  @media (prefers-color-scheme: dark) {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+  }
+}
+
+.provider-logo {
+  width: 14px;
+  height: 16px;
+}

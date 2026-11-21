@@ -1,0 +1,32 @@
+// The field (and the pressed-in top shadow over it) shows through the glyphs. The text itself
+// stays real text, so it is selectable and read by screen readers.
+.text {
+  display: inline-block;
+  background-image: var(--splotch-text-fill);
+  background-size:
+    100% 100%,
+    cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+// Solid ink (the inherited text color) wherever the field cannot be clipped to the glyphs.
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  .text {
+    background-image: none;
+    color: inherit;
+    -webkit-text-fill-color: currentColor;
+  }
+}
+
+@media (forced-colors: active) {
+  .text {
+    background-image: none;
+    color: CanvasText;
+    -webkit-text-fill-color: CanvasText;
+  }
+}

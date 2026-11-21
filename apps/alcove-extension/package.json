@@ -1,0 +1,39 @@
+{
+  "name": "@hicya/alcove-extension",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wxt",
+    "build": "wxt build",
+    "build:firefox": "wxt build --browser firefox",
+    "zip": "wxt zip",
+    "zip:firefox": "wxt zip --browser firefox",
+    "typecheck": "wxt prepare && tsc --noEmit",
+    "test": "wxt prepare && vitest run"
+  },
+  "dependencies": {
+    "@hicya/alcove-shared": "workspace:*",
+    "@hicya/analytics": "workspace:*",
+    "@hicya/auth-sdk": "workspace:*",
+    "@hicya/signature": "workspace:*",
+    "@hicya/sync": "workspace:*",
+    "@hicya/ui": "workspace:*",
+    "@mozilla/readability": "^0.5.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@hicya/tsconfig": "workspace:*",
+    "@noble/ciphers": "^2.4.0",
+    "@noble/curves": "^2.4.0",
+    "@noble/hashes": "^2.4.0",
+    "@types/chrome": "^0.1.38",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "sass": "^1.98.0",
+    "typescript": "^5.7.2",
+    "vitest": "^4.1.0",
+    "wxt": "^0.20.20"
+  }
+}
